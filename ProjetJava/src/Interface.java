@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+
 public class Interface extends Application  {
 	public Scene construireScene() {
 		//Initialisation de l'interface
@@ -49,11 +50,13 @@ public class Interface extends Application  {
 		{
 			 if (importation.getSelectedToggle() != null) {
 	         	   ToggleButton button = (ToggleButton) importation.getSelectedToggle();
-	                //Base.setText("Importation en cours de la base de données sur le " + button.getText());
 	                MesTweets.creationBase();
-	        		MesTweets.ouvrirBase(button.getText().toLowerCase().concat(".txt"));
-	        		//button.getText().toLowerCase().concat(".txt")
-	        		
+	                if(button.getText()=="Climat") {
+	                	MesTweets.ouvrirBase("climat.txt");
+	                }else {
+	                	MesTweets.ouvrirBase("Foot.txt");
+	                }
+	        			        		
 	        		//Initalisation du corps de l'interface
 	        		VBox vBox1 = new VBox();
 	        		vBox1.setPadding(new Insets(10));
@@ -72,9 +75,7 @@ public class Interface extends Application  {
 	        		Label labelNom3 = new Label("Critères :"); 
 	        		labelNom3.setPadding(new Insets(5));
 	        		hbox3.getChildren().addAll(labelNom3);
-	        		
-	        		
-	        		
+	        			        		        		
 	        		//Choix de la date
 	        		HBox hbox4 = new HBox();
 	        		hbox4.setSpacing(10);
@@ -89,9 +90,7 @@ public class Interface extends Application  {
 	        			Date.getItems().add(d);
 	        		}
 	        		Date.getSelectionModel().select("Toutes les dates");
-	        		
-	        		
-	        		
+	        			        		    
 	        		hbox4.getChildren().addAll(labelNom4,Date);
 	        		
 	        		//Choix de l'utilisateur
@@ -116,8 +115,7 @@ public class Interface extends Application  {
 	        		
 	        		//Ajout de la liste à l'interface
 	        		hbox5.getChildren().addAll(labelNom5,Utilisateur);
-	        		
-	        		
+	        			        		
 	        		//Choix de l'utilisateur retweeté
 	        		HBox hbox6 = new HBox();
 	        		hbox6.setSpacing(10);
@@ -197,17 +195,15 @@ public class Interface extends Application  {
 	        		{
 	        		public void handle(ActionEvent event)
 	        		{
-	        			
-	        			
-	        			
+	        			       			
 	        			//Récupération de tous les tweets
 	        			ObservableList<Tweets> list=BaseDeTweets.ListeTweets();
 	        			ObservableList<Tweets> temp=FXCollections.observableArrayList();
 	        			
 	        			//Liste des tweets contenant la recherche
 	        			if(text1.getText()!="") {
+	        				
 	        				String recherche_tot = text1.getText();
-	        				System.out.println(recherche_tot);
 	        				temp=BaseDeTweets.recherche(recherche_tot,1,list);
 	        				list=temp;
 	        			}
@@ -285,6 +281,7 @@ public class Interface extends Application  {
 	        			if (groupe1.getSelectedToggle() != null) {norm=true;}
 	        			if (groupe2.getSelectedToggle() != null) {c=true;}
 	        			table=MesTweets.tab_data(list, norm, c);
+	        			
 	        			//Nouvelle fenêtre pour l'affichage du tableau
 	        		    StackPane secondaryLayout = new StackPane();
 	        		    secondaryLayout.getChildren().add(table);
@@ -342,6 +339,7 @@ public class Interface extends Application  {
         		    fenetre.show();
 	        		
 	            }else {
+	            	//Si l'utilisateur ne choisit pas de base de données
 	            	Base.setText("Choisissez une base de données");
 	            }
 			 

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-//trouver sur internet à adapter.
+
+//Adaptation du code :https://gist.github.com/guenodz/d5add59b31114a3a3c66
 public class Normalisation {
 	
 	//Nombre d'occurence d'un mot dans un tweet
@@ -33,3 +34,4 @@ public class Normalisation {
 	    	return tweet_occurence(doc, term) * total_occurence(docs, term);
 	    }      
 }
+

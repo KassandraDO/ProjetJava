@@ -3,6 +3,7 @@ import java.util.Random;
 
 import javafx.collections.ObservableList;
 
+
 public class KMeans {
     	
     	public static ArrayList<Tweets> initialisation(Integer nb_c,ObservableList<Tweets> list,ArrayList<Tweets> moy){
@@ -80,6 +81,7 @@ public class KMeans {
 		        return moy;
 	    } 
 	    
+	    //Calcul de distance entre deux tweets
 	    public static double distance (Tweets moy,Tweets t,boolean select) {
 	    	Double d=0.0;
 	    	ArrayList<String> m=new ArrayList<String>();
@@ -98,4 +100,5 @@ public class KMeans {
 	    }
         
     }
+
 

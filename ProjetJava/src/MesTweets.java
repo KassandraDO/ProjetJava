@@ -1,16 +1,15 @@
 import java.time.LocalDate;
-
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+
 public class MesTweets {
     private static BaseDeTweets collec = null;
 
     //Création d'une base
-    public static void creationBase()
-    {
+    public static void creationBase(){
         collec = new BaseDeTweets();
     }
 
@@ -20,6 +19,7 @@ public class MesTweets {
     }
     
     //Affichage des données
+    //Utilisation de la documentation suivante :https://docs.oracle.com/javafx/2/ui_controls/table-view.htm
     @SuppressWarnings("unchecked")
 	public static TableView<Tweets> tab_data(ObservableList<Tweets> list,boolean norm,boolean c) {
     	TableView<Tweets> table=new TableView<Tweets>();
